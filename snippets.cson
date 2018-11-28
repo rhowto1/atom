@@ -1,0 +1,456 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+# addition & override to language-latex
+'.text.tex.latex':
+# combined
+  'magic directive':
+    'prefix': 'magic'
+    'body': """
+    % !TEX root = ./${1:input master filename, or delete the line}
+    % !TEX program = ${2:XeLaTeX}
+    % !TEX option = ${3:TeX engine options, if any}
+    """
+  'Document':
+    'prefix': 'document'
+    'body': """
+      \\\\documentclass${1:[]}{${2:article}}
+      %%%\\\\pagestyle{empty}\\\\thispagestyle{empty}
+      \\\\begin{document}
+      %\\\\subsection*{Acknowledgment}
+      % I would like to thank ...
+      % This work was supported by JSPS KAKENHI Grant Number ZZZZZZZZ.
+      %\\\\bibliographystyle{plain}
+      %\\\\bibliography{${3:file.bib}}
+      \\\\end{document}
+      """
+  'jDocument':
+    'prefix': 'jdocument'
+    'body': """
+      \\\\documentclass${1:[]}{${2:ltjsarticle}}
+      %\\\\usepackage{luatexja} % no need with ltjclasses or ltjsclasses
+      %\\\\usepackage{lmodern}
+      %\\\\usepackage[ipaex]{luatexja-preset}
+      %%%\\\\pagestyle{empty}\\\\thispagestyle{empty}
+      \\\\begin{document}
+      %\\\\subsection*{Acknowledgment}
+      % I would like to thank ...
+      %\\\\bibliographystyle{plain}
+      %\\\\bibliography{${3:file.bib}}
+      \\\\end{document}
+      """
+  'Epilogue':
+    'prefix': 'epilogue'
+    'body': """
+      \\\\subsection*{Acknowledgment}
+      % I would like to thank ...
+      \\\\bibliographystyle{plain}
+      \\\\bibliography{${1:file.bib}}
+      """
+# Document level
+  'Chapter':
+    'prefix': 'cha'
+    'body': '\\\\chapter{${1:chapter name}}\n\\\\label{cha:${1:chapter label}}\n$2'
+  'Sub Section':
+    'prefix': 'sub'
+    'body': '\\\\subsection{${1:subsection name}}\n\\\\label{subsec:${1:subsection label}}\n$2'
+  'Sub Sub Section':
+    'prefix': 'subs'
+    'body': '\\\\subsubsection{${1:subsubsection name}}\n\\\\label{subsubsec:${1:subsubsection label}}\n$2'
+# commands general
+  # 'Generic monadic command':
+  #   'prefix': 'cmd'
+  #   'body': '\\\\${1:cmd}{$2}'
+  # 'Generic binary command':
+  #   'prefix': 'cmd2'
+  #   'body': '\\\\${1:cmd}{$2}{$3}'
+  # 'Generic ternary command':
+  #   'prefix': 'cmd2'
+  #   'body': '\\\\${1:cmd}{$2}{$3}{$4}'
+  'newcommand':
+    'prefix': 'newcom'
+    'body': '\\\\newcommand{\\\\${1:cmd}}[${2:1}][${3:default}]{${4:body}}'
+  'renewcommand':
+    'prefix': 'renewcom'
+    'body': '\\\\renewcommand{\\\\${1:cmd}}[${2:1}][${3:default}]{${4:body}}'
+# pervasive commands
+  'TeX':
+    'prefix': 'tex'
+    'body': '\\\\TeX{}'
+  'LaTeX':
+    'prefix': 'latex'
+    'body': '\\\\LaTeX{}'
+  'Verb':
+    'prefix': 'verb'
+    'body': '\\\\verb|${1:text}|$0'
+  'footnote':
+    'prefix': 'ftn'
+    'body': '\\\\unskip\\\\footnote{$1}'
+  'footnotemark':
+    'prefix': 'ftm'
+    'body': '\\\\unskip\\\\footnotemark{}'
+  'footnotetext':
+    'prefix': 'ftt'
+    'body': '\\\\footnotetext{$1}'
+# preamble commands
+  'input':
+    'prefix': 'input'
+    'body': '\\\\input{$1}'
+  'usepackage':
+    'prefix': 'usep'
+    'body': '\\\\usepacakge${1:[]}{$2}'
+# page control
+  'page break':
+    'prefix': 'pagebr'
+    'body': '\\\\pagebreak[${1:Strength 0-4}]'
+  'nopage break':
+    'prefix': 'nopagebr'
+    'body': '\\\\nopagebreak[${1:Strength 0-4}]'
+  'newpage':
+    'prefix': 'newp'
+    'body': '\\\\newpage{}'
+  'clearpage':
+    'prefix': 'clearp'
+    'body': '\\\\clearpage{}'
+  'cleardoublepage':
+    'prefix': 'cleardp'
+    'body': '\\\\cleardoublepage{}'
+# spanning_branching
+  'hspace':
+    'prefix': 'hsp'
+    'body': '\\\\hspace{${1:len}}'
+  'hspace line break':
+    'prefix': 'hsp*'
+    'body': '\\\\hspace*{${1:len}}'
+  'vspace':
+    'prefix': 'vsp'
+    'body': '\\\\vspace{${1:len}}'
+  'vspace line break':
+    'prefix': 'vsp*'
+    'body': '\\\\hspace*{${1:len}}'
+# text fonts
+  'tiny':
+    'prefix': 'tiny'
+    'body': '\\\\tiny $1'
+  'scriptsize':
+    'prefix': 'script'
+    'body': '\\\\scriptsize $1'
+  'footnotesize':
+    'prefix': 'ftsize'
+    'body': '\\\\footnotesize $1'
+  'small':
+    'prefix': 'small'
+    'body': '\\\\small $1'
+  'normal':
+    'prefix': 'normal'
+    'body': '\\\\normal $1'
+  'large':
+    'prefix': 'large'
+    'body': '\\\\large $1'
+  'huge':
+    'prefix': 'huge'
+    'body': '\\\\huge $1'
+  'Emph':
+    'prefix': 'emph'
+    'body': '\\\\emph{$1}$0'
+  'textit':
+    'prefix': 'it'
+    'body': '\\\\textit{$1}$0'
+  'textbf':
+    'prefix': 'bf'
+    'body': '\\\\textbf{$1}$0'
+  'textrm':
+    'prefix': 'rm'
+    'body': '\\\\textrm{$1}$0'
+  'textsf':
+    'prefix': 'sf'
+    'body': '\\\\textsf{$1}$0'
+  'textsl':
+    'prefix': 'sl'
+    'body': '\\\\textsl{$1}$0'
+  'textsc':
+    'prefix': 'sc'
+    'body': '\\\\textsc{$1}$0'
+  'textup':
+    'prefix': 'up'
+    'body': '\\\\textup{$1}$0'
+  'textnormal':
+    'prefix': 'norm'
+    'body': '\\\\textnormal{$1}$0'
+# box commands
+  'mbox':
+    'prefix': 'mb'
+    'body': '\\\\mbox{$1}'
+  'makebox':
+    'prefix': 'makeb'
+    'body': '\\\\makebox[${1:0cm}][${2:lrcs}]{$3}'
+  'fbox':
+    'prefix': 'fb'
+    'body': '\\\\fbox{$1}'
+  'parbox':
+    'prefix': 'parb'
+    'body': '\\\\parbox[${1:tb}]{${2:1.0\\\\textwidth}}{$3}'
+  'minipage':
+    'prefix': 'minip'
+    'body': """
+    \\\\begin{minipage}[${1:tb}]{${2:1.0\\\\textwidth}}
+    \t$0
+    \\\\end{minipage}
+    """
+  'rule':
+    'prefix': 'rule'
+    'body': '\\\\rule[${1:raise}]{${2:height}}{${3:thickness}}'
+  'raisebox':
+    'prefix': 'raiseb'
+    'body': '\\\\rule{${1:raise}}[${2:height_above}][${3:depth_below}]'
+# math commands
+  'Array':
+    'prefix': 'arr'
+    'body': """
+    \\\\begin{array}[ctb]{${1:rlc}}
+    \t$0
+    \\\\end{array}
+    """
+  'Align(ed)':
+    'prefix': 'ali'
+    'body': '\\\\begin{align}\n\t$1\n\\\\end{align}'
+  'Align(ed) nonumber':
+    'prefix': 'ali*'
+    'body': '\\\\begin{align*}\n\t$1\n\\\\end{align*}'
+  'Flalign(ed)':
+    'prefix': 'flali'
+    'body': '\\\\begin{flalign}\n\t$1\n\\\\end{flalign}'
+  'Flalign(ed) nonumber':
+    'prefix': 'flali*'
+    'body': '\\\\begin{flalign*}\n\t$1\n\\\\end{flalign*}'
+  'Alignat(ed)':
+    'prefix': 'alat'
+    'body': '\\\\begin{alignat}{${1:2}}\n\t$2\n\\\\end{alignat}'
+  'Alignat(ed) nonumber':
+    'prefix': 'alat*'
+    'body': '\\\\begin{alignat*}{${1:2}}\n\t$2\n\\\\end{alignat*}'
+  'Equation':
+    'prefix': 'eq'
+    'body': '\\\\begin{equation}\n\t$0\n\\\\end{equation}'
+  'Equation nonumber':
+    'prefix': 'eq*'
+    'body': '\\\\begin{equation*}\n\t$0\n\\\\end{equation*}'
+  'Gather(ed)':
+    'prefix': 'gat'
+    'body': '\\\\begin{gather}\n\t$0\n\\\\end{gather}'
+  'Gather(ed) nonumber':
+    'prefix': 'gat*'
+    'body': '\\\\begin{gather*}\n\t$0\n\\\\end{gather*}'
+  'Multiline(ed)':
+    'prefix': 'multl'
+    'body': '\\\\begin{multiline}\n\t$0\n\\\\end{multiline}'
+  'Multiline(ed) nonumber':
+    'prefix': 'multl*'
+    'body': '\\\\begin{multiline*}\n\t$0\n\\\\end{multiline*}'
+  'Split':
+    'prefix': 'spl'
+    'body': '\\\\begin{split}\n\t$0\n\\\\end{split}'
+  'Math text':
+    'prefix': 'text'
+    'body': '\\\\text{$1}'
+  'quad':
+    'prefix': 'qu'
+    'body': '\\\\quad'
+  'qquad':
+    'prefix': 'qqu'
+    'body': '\\\\qquad'
+  'overline':
+    'prefix': 'ol'
+    'body': '\\\\overline{$1}'
+  'underline':
+    'prefix': 'ul'
+    'body': '\\\\underline{$1}'
+# graphicx
+   'includegraphics':
+    'prefix': 'inclg'
+    'body': '\\\\includegraphics[scale=${1:1.0},width=${2:8cm},height=${3:8cm}]{$4:file.eps}'
+  'includegraphics*':
+    'prefix': 'inclg*'
+    'body': '\\\\includegraphics*[scale=${1:1.0},width=${2:8cm},height=${3:8cm}]{$4:file.eps}'
+# semantic
+  'inference':
+    'prefix': 'inf'
+    'body': '\\\\inference[${1:name}]{${2:premises}}{${3:conclusion}}'
+  'inference compact':
+    'prefix': 'inf*'
+    'body': '\\\\inference*[${1:name}]{${2:premises}}{${3:conclusion}}'
+# Environments
+  'newenvironement':
+    'prefix': 'newenv'
+    'body': '\\\\newenvironment{${1:cmd}}[${2:0}][${3:default}]{\\\\begin{${4:env}}}{\\\\end{${4:env}}}'
+  'renewenvironement':
+    'prefix': 'renewenv'
+    'body': '\\\\renewenvironment{${1:cmd}}[${2:0}][${3:default}]{\\\\begin{${4:env}}}{\\\\end{${4:env}}}'
+  'newtheorem':
+    'prefix': 'newth'
+    'body': '\\\\newtheorem{${1:name}}[${2:numbered-like}]{${3:caption}}'
+  'newtheorem within':
+    'prefix': 'newthin'
+    'body': '\\\\newtheorem{${1:name}}{${2:caption}}[${3:within}]'
+#
+  'Frame':
+    'prefix': 'fr'
+    'body': '\\\\begin{frame}{$1}\n\t \n\\\\end{frame}'
+  'Quote':
+    'prefix': 'quo'
+    'body': '\\\\begin{quote}\n\t $1\n\\\\end{quote}'
+  'Quotation':
+    'prefix': 'quota'
+    'body': '\\\\begin{quotation}\n\t $1\n\\\\end{quotation}'
+  'Verse':
+    'prefix': 'verse'
+    'body': '\\\\begin{verse}\n\t $1\n\\\\end{quote}'
+  'List':
+    'prefix': 'list'
+    'body': '\\\\begin{list}{${1:label}}{${2:decls}}\n\t\\\\item $3\n\\\\end{list}'
+  'Verbatim':
+    'prefix': 'verba'
+    'body': '\\\\begin{verbatim}$1\\\\end{verbatim}'
+  'Verbatim spaced':
+    'prefix': 'verba*'
+    'body': '\\\\begin{verbatim*}$1\\\\end{verbatim*}'
+  'Tabbing':
+    'prefix': 'tabbing'
+    'body': '\\\\begin{tabbing}\n\t\\\\item $1\n\\\\end{tabbing}'
+  'Abstract':
+    'prefix': 'abs'
+    'body': '\\\\begin{abstract}\n\t$1\n\\\\end{abstract}'
+  'Alltt':
+    'prefix': 'alltt'
+    'body': '\\\\begin{alltt}\n\t\\\\item $1\n\\\\end{alltt}'
+  'Wrapfig':
+    'prefix': 'wrapfig'
+    'body': """
+    \\\\begin{wrapfigure}[${1:5}]{${2:rlioRLIO}}[${3:0pt}]{${4:30mm}} %% [lines]{(Upcase for inexact)placement}[overhang]{width}
+    \t$0
+    \\\\caption{${5:}}\\\\label{fig:${5:}}
+    \\\\end{wrapfigure}
+    """
+  'Tabular':
+    'prefix': 'tabu'
+    'body': """
+    \\\\begin{tabular}[${1:tb}]{${2:lrc}}
+    \t$0
+    \\\\end{tabular}
+    """
+  'Tabular with length':
+    'prefix': 'tabu*'
+    'body': """
+    \\\\begin{tabular*}[${1:tb}]{${2:lrc}}
+    \t$0
+    \\\\end{tabular*}
+    """
+  'multicolumn':
+    'prefix': 'multicol'
+    'body': '\\\\multicolumn{${1:3}}{${2:lcr}}{${3:items}}'
+  'vline':
+    'prefix': 'vl'
+    'body': '\\\\vline'
+  'hline':
+    'prefix': 'hl'
+    'body': '\\\\hline'
+  'cline':
+    'prefix': 'cl'
+    'body': '\\\\cline{${1:from}-${2:to}}'
+# Floats (redefined & *-ed 2-columns)
+  'Floating Figure':
+    'prefix': 'ffig'
+    'body': """
+    \\\\begin{figure}[htbp]
+    \t\\\\centering%
+    \t$0
+    \t\\\\caption{$1}
+    \t\\\\label{fig:$2}
+    \\\\end{figure}
+    """
+  'Floating Table':
+    'prefix': 'ftab'
+    'body': """
+    \\\\begin{table}[htbp]
+    \t\\\\centering%
+    \t\\\\begin{tabular}[${1:tb}]{${2:lrc}}
+    \t\t$0
+    \t\\\\end{tabular}
+    \t\\\\caption{$3}
+    \t\\\\label{tab:$4}
+    \\\\end{table}
+    """
+  'Floating Figure in two-columns':
+    'prefix': 'ffig*'
+    'body': """
+    \\\\begin{figure*}[htbp]
+    \t\\\\centering%
+    \t$0
+    \t\\\\caption{$1}
+    \t\\\\label{fig:$2}
+    \\\\end{figure*}
+    """
+  'Floating Table in two-columns':
+    'prefix': 'ftab*'
+    'body': """
+    \\\\begin{table*}[htbp]
+    \t\\\\centering%
+    \t\\\\begin{tabular}[${1:tb}]{${2:lrc}}
+    \t\t$0
+    \t\\\\end{tabular}
+    \t\\\\caption{$3}
+    \t\\\\label{tab:$4}
+    \\\\end{table*}
+    """
+# References
+  'Citation':
+    'prefix': 'cite'
+    'body': '\\\\cite{${0:}}'
+  'CrossRef':
+    'prefix': 'ref'
+    'body': '\\\\ref{${0:}}'
+  'PageRef':
+    'prefix': 'pageref'
+    'body': '\\\\pageref{${0:}}'
+  'EqRef':
+    'prefix': 'eqref'
+    'body': 'Eq.~\\\\eqref{${1:eq}}'
+  'nocite':
+    'prefix': 'nocite'
+    'body': '\\\\nocite{${1:*}}'
+  'newcounter':
+    'prefix': 'newcounter'
+    'body': '\\\\newcounter{${1:counter}}[${2:within}]'
+  'setcounter':
+    'prefix': 'setcounter'
+    'body': '\\\\setcounter{${1:counter}}{${2:0}}'
+  'addtocounter':
+    'prefix': 'addtocounter'
+    'body': '\\\\addtocounter{${1:counter}}{${2:1}}'
+  'value':
+    'prefix': 'value'
+    'body': '\\\\value{${1:counter}}'
+# simple item
+'.text.tex.latex .meta.function.environment.list':
+  '\\\\item':
+    'prefix': 'i'
+'body': '\\\\item ${0:}'
