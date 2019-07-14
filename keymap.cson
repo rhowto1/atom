@@ -33,4 +33,4 @@
 
 'atom-text-editor':
   'ctrl-b': 'latex:toggle-bold'
-  'ctrl-i': 'latex:toggle-italic'
+  'ctrl-i': 'latex:toggle-emph'
