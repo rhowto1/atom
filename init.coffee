@@ -20,10 +20,10 @@ atom.commands.add 'atom-text-editor',
              editor.moveLeft()
 
 atom.commands.add 'atom-text-editor',
-    'latex:toggle-italic', ->
+    'latex:toggle-emph', ->
         return unless editor = atom.workspace.getActiveTextEditor()
         editor.selectWordsContainingCursors()
         selection = editor.getLastSelection()
-        selection.insertText("\\textit{#{selection.getText()}}")
+        selection.insertText("\\emph{#{selection.getText()}}")
         if not editor.getSelectedText()
              editor.moveLeft()
