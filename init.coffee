@@ -11,17 +11,19 @@
 #     console.log "Saved! #{editor.getPath()}"
 
 atom.commands.add 'atom-text-editor',
-  'latex:toggle-bold', ->
-      return unless editor = atom.workspace.getActiveTextEditor()
-      selection = editor.getLastSelection()
-      selection.insertText("\\textbf{#{selection.getText()}}")
-      if not editor.getSelectedText()
-          editor.moveLeft()
+    'latex:toggle-bold', ->
+        return unless editor = atom.workspace.getActiveTextEditor()
+        editor.selectWordsContainingCursors()
+        selection = editor.getLastSelection()
+        selection.insertText("\\textbf{#{selection.getText()}}")
+        if not editor.getSelectedText()
+             editor.moveLeft()
 
 atom.commands.add 'atom-text-editor',
-  'latex:toggle-italic', ->
-      return unless editor = atom.workspace.getActiveTextEditor()
-      selection = editor.getLastSelection()
-      selection.insertText("\\textit{#{selection.getText()}}")
-      if not editor.getSelectedText()
-          editor.moveLeft()
+    'latex:toggle-italic', ->
+        return unless editor = atom.workspace.getActiveTextEditor()
+        editor.selectWordsContainingCursors()
+        selection = editor.getLastSelection()
+        selection.insertText("\\textit{#{selection.getText()}}")
+        if not editor.getSelectedText()
+             editor.moveLeft()
